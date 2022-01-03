@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef } from "react";
+
 // Image Imports
 import pose from "./images/gym-pose.png";
 
@@ -8,14 +11,48 @@ import Amenity from "./components/amenity";
 import { amenities } from "./data/amenities";
 
 function App() {
+  const poseRef = useRef(null);
+  const circleRef = useRef(null);
+  const welcomeTextRef = useRef(null);
+
+  const observer = new IntersectionObserver((entries) => {
+    console.log(entries);
+    entries.forEach((entry) => {
+      switch (entry.target.id) {
+        case "pose":
+          entry.target.classList.toggle("animate-pose", entry.isIntersecting);
+          break;
+        case "circle":
+          entry.target.classList.toggle("animate-circle", entry.isIntersecting);
+          break;
+        case "welcome-text":
+          entry.target.classList.toggle(
+            "animate-welcome",
+            entry.isIntersecting
+          );
+          break;
+        default:
+          return;
+      }
+
+      if (entry.isIntersecting) observer.unobserve(entry.target);
+    });
+  });
+
+  useEffect(() => {
+    observer.observe(poseRef.current);
+    observer.observe(circleRef.current);
+    observer.observe(welcomeTextRef.current);
+  }, []);
+
   return (
     <>
       <section id="welcome">
         <div id="yoga-pose">
-          <div id="circle" />
-          <img src={pose} alt="pose" />
+          <div id="circle" ref={circleRef} />
+          <img id="pose" src={pose} alt="pose" ref={poseRef} />
         </div>
-        <div id="welcome-text">
+        <div id="welcome-text" ref={welcomeTextRef}>
           <header>
             <h1>Welcome to,</h1>
             <h1>Ronnies Gym</h1>

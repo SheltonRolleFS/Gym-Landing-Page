@@ -18,6 +18,14 @@
     img {
       width: 75%;
       z-index: 3;
+      transform: translateX(-200px) translateY(-200px);
+      opacity: 0;
+      transition: all 2s ease-in-out;
+    }
+
+    img.animate-pose {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
     }
 
     #circle {
@@ -26,6 +34,12 @@
       background-color: rgba(233, 107, 107, 0.88);
       position: absolute;
       border-radius: 100%;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
+    #circle.animate-circle {
+      opacity: 1;
     }
   }
 
@@ -36,6 +50,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    transform: translateX(500px);
+    opacity: 0;
+    transition: all 2s ease-in-out;
 
     header {
       font-style: italic;
@@ -92,6 +109,11 @@
         background-color: rgb(91, 190, 190);
       }
     }
+  }
+
+  &-text.animate-welcome {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
