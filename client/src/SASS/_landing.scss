@@ -1,6 +1,7 @@
 #welcome {
   background: url("../images/background-image.jpg") center no-repeat;
   background-size: 100%;
+  background-attachment: fixed;
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -35,7 +36,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    font-family: "Roboto", sans-serif;
 
     header {
       font-style: italic;
@@ -53,7 +53,6 @@
 
     p {
       font-size: 3rem;
-      font-weight: lighter;
       line-height: 2;
       margin: 5rem 0 7rem;
       width: 75%;
@@ -103,7 +102,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.53);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 1;
 }
 
@@ -111,4 +110,163 @@
   width: 100vw;
   height: 7vh;
   background-color: rgb(35, 32, 32);
+}
+
+#amenities {
+  width: 100vw;
+  height: 100vh;
+  background: url("../images/amenities-section.jpg") center no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 2;
+
+  h2 {
+    padding: 2rem 0;
+    text-align: center;
+    color: white;
+    font-style: italic;
+    font-size: 7rem;
+  }
+
+  .amenity-container {
+    max-width: 60vw;
+    margin: auto;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+
+    .amenity {
+      min-height: 350px;
+      background: center no-repeat;
+      padding: 4rem;
+      margin: auto;
+      position: relative;
+      background-size: 100%;
+      z-index: 1;
+
+      h1 {
+        font-size: 3rem;
+        font-style: italic;
+        padding: 1rem 0;
+      }
+
+      p {
+        font-size: 1.8rem;
+        font-weight: lighter;
+      }
+    }
+
+    .amenity::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(28, 14, 57, 0.82);
+      z-index: -1;
+    }
+  }
+}
+
+#amenities::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.53);
+  z-index: -1;
+}
+
+footer {
+  background-color: rgb(35, 32, 32);
+  padding: 6rem 0;
+  color: white;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 75vw;
+    margin: auto;
+  }
+
+  div {
+    h3 {
+      margin-bottom: 0.5rem;
+      font-size: 5rem;
+      color: rgb(233, 107, 107);
+    }
+
+    h4 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: lighter;
+    }
+
+    strong {
+      font-size: 2rem;
+    }
+  }
+
+  #contact {
+    #email {
+      padding: 2rem 0;
+    }
+
+    #phone {
+      padding: 2rem 0;
+
+      p {
+        padding: 0.5rem 0;
+      }
+    }
+  }
+
+  #newsletter {
+    text-align: center;
+
+    form {
+      margin: 2rem 0;
+
+      input {
+        width: 75%;
+        padding: 0.5rem 1rem;
+        border: 1px solid rgb(202, 82, 82);
+        background: transparent;
+        color: white;
+        font-weight: lighter;
+        outline: none;
+      }
+
+      input::placeholder {
+        font-weight: lighter;
+        color: white;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        border: 1px solid rgb(202, 82, 82);
+        background-color: rgb(202, 82, 82);
+        color: white;
+        border-radius: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  #location {
+    text-align: right;
+
+    p {
+      font-size: 2rem;
+      font-weight: normal;
+    }
+  }
 }
